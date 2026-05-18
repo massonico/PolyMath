@@ -33,3 +33,55 @@ class PolymarketClient:
             resp.raise_for_status()
             return resp.json()
         last_resp.raise_for_status()
+
+    def get_resolved_markets(
+        self,
+        limit: int = 20,
+        min_volume: float = 0.0,
+        category: str | None = None,
+        min_duration_days: int = 0,
+    ) -> list[dict]:
+        from datetime import datetime
+
+        params = {
+            "closed": "true",
+            "active": "false",
+            "limit": limit * 5,
+            "order": "volumeNum",
+            "ascending": "false",
+        }
+        if category:
+            params["tag"] = category
+
+        raw = self._get(GAMMA_API, "/markets", params=params)
+
+        results = []
+        for m in raw:
+            if m.get("volumeNum", 0) < min_volume:
+                continue
+
+            if min_duration_days > 0:
+                start = datetime.fromisoformat(m["startDate"].replace("Z", "+00:00"))
+                end = datetime.fromisoformat(m["endDate"].replace("Z", "+00:00"))
+                if (end - start).days < min_duration_days:
+                    continue
+
+            token_map = dict(zip(m["outcomes"], m["clobTokenIds"]))
+            if "Yes" not in token_map or "No" not in token_map:
+                continue
+
+            results.append({
+                "condition_id": m["conditionId"],
+                "question": m["question"],
+                "slug": m["slug"],
+                "volume_usd": m["volumeNum"],
+                "start_date": m["startDate"],
+                "end_date": m["endDate"],
+                "yes_token_id": token_map["Yes"],
+                "no_token_id": token_map["No"],
+            })
+
+            if len(results) >= limit:
+                break
+
+        return results

@@ -49,3 +49,81 @@ def test_post_returns_json_on_200():
     with patch("requests.post", return_value=mock_resp):
         result = client._post(CLOB_API, "/batch-prices-history", {"markets": []})
     assert result == {"history": {}}
+
+
+_SAMPLE_MARKET = {
+    "conditionId": "0xabc123",
+    "question": "Will X happen?",
+    "slug": "will-x-happen",
+    "volumeNum": 50000.0,
+    "startDate": "2024-01-01T00:00:00Z",
+    "endDate": "2024-03-15T00:00:00Z",
+    "clobTokenIds": ["token_yes_1", "token_no_1"],
+    "outcomes": ["Yes", "No"],
+    "closed": True,
+    "active": False,
+}
+
+
+def test_get_resolved_markets_normalizes_fields():
+    client = PolymarketClient()
+    with patch.object(client, "_get", return_value=[_SAMPLE_MARKET]):
+        result = client.get_resolved_markets(limit=1)
+    assert len(result) == 1
+    m = result[0]
+    assert m["condition_id"] == "0xabc123"
+    assert m["yes_token_id"] == "token_yes_1"
+    assert m["no_token_id"] == "token_no_1"
+    assert m["volume_usd"] == 50000.0
+    assert m["start_date"] == "2024-01-01T00:00:00Z"
+    assert m["end_date"] == "2024-03-15T00:00:00Z"
+
+
+def test_get_resolved_markets_filters_by_min_volume():
+    client = PolymarketClient()
+    markets = [
+        {**_SAMPLE_MARKET, "conditionId": "0x001", "volumeNum": 5000.0},
+        {**_SAMPLE_MARKET, "conditionId": "0x002", "volumeNum": 50000.0},
+    ]
+    with patch.object(client, "_get", return_value=markets):
+        result = client.get_resolved_markets(limit=10, min_volume=10000.0)
+    assert len(result) == 1
+    assert result[0]["condition_id"] == "0x002"
+
+
+def test_get_resolved_markets_filters_by_min_duration():
+    client = PolymarketClient()
+    markets = [
+        {**_SAMPLE_MARKET, "conditionId": "0x001",
+         "startDate": "2024-01-01T00:00:00Z", "endDate": "2024-01-05T00:00:00Z"},  # 4 days
+        {**_SAMPLE_MARKET, "conditionId": "0x002",
+         "startDate": "2024-01-01T00:00:00Z", "endDate": "2024-03-15T00:00:00Z"},  # 74 days
+    ]
+    with patch.object(client, "_get", return_value=markets):
+        result = client.get_resolved_markets(limit=10, min_duration_days=30)
+    assert len(result) == 1
+    assert result[0]["condition_id"] == "0x002"
+
+
+def test_get_resolved_markets_skips_non_binary():
+    client = PolymarketClient()
+    multi_outcome = {
+        **_SAMPLE_MARKET,
+        "conditionId": "0x003",
+        "outcomes": ["A", "B", "C"],
+        "clobTokenIds": ["t1", "t2", "t3"],
+    }
+    with patch.object(client, "_get", return_value=[multi_outcome]):
+        result = client.get_resolved_markets(limit=10)
+    assert result == []
+
+
+def test_get_resolved_markets_passes_category_as_tag_param():
+    client = PolymarketClient()
+    captured = {}
+    def fake_get(base_url, path, params=None):
+        captured["params"] = params
+        return [_SAMPLE_MARKET]
+    with patch.object(client, "_get", side_effect=fake_get):
+        client.get_resolved_markets(limit=1, category="politics")
+    assert captured["params"]["tag"] == "politics"
