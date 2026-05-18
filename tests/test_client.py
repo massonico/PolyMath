@@ -127,3 +127,44 @@ def test_get_resolved_markets_passes_category_as_tag_param():
     with patch.object(client, "_get", side_effect=fake_get):
         client.get_resolved_markets(limit=1, category="politics")
     assert captured["params"]["tag"] == "politics"
+
+
+def test_batch_prices_history_returns_token_map():
+    client = PolymarketClient()
+    fake_response = {"history": {"tok1": [{"t": 1000, "p": 0.7}]}}
+    with patch.object(client, "_post", return_value=fake_response):
+        result = client.batch_prices_history(["tok1"])
+    assert result == {"tok1": [{"t": 1000, "p": 0.7}]}
+
+
+def test_batch_prices_history_chunks_at_20():
+    client = PolymarketClient()
+    token_ids = [str(i) for i in range(25)]
+    call_bodies = []
+
+    def fake_post(base_url, path, body):
+        call_bodies.append(body["markets"])
+        return {"history": {tid: [{"t": 1000, "p": 0.5}] for tid in body["markets"]}}
+
+    with patch.object(client, "_post", side_effect=fake_post):
+        result = client.batch_prices_history(token_ids)
+
+    assert len(call_bodies) == 2           # 25 tokens → chunk of 20 + chunk of 5
+    assert len(call_bodies[0]) == 20
+    assert len(call_bodies[1]) == 5
+    assert len(result) == 25              # all tokens returned
+
+
+def test_batch_prices_history_passes_interval_and_fidelity():
+    client = PolymarketClient()
+    captured = {}
+
+    def fake_post(base_url, path, body):
+        captured.update(body)
+        return {"history": {}}
+
+    with patch.object(client, "_post", side_effect=fake_post):
+        client.batch_prices_history(["tok1"], interval="1h", fidelity=30)
+
+    assert captured["interval"] == "1h"
+    assert captured["fidelity"] == 30

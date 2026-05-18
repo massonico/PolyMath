@@ -85,3 +85,17 @@ class PolymarketClient:
                 break
 
         return results
+
+    def batch_prices_history(
+        self,
+        token_ids: list[str],
+        interval: str = "1d",
+        fidelity: int = 60,
+    ) -> dict[str, list[dict]]:
+        results = {}
+        for i in range(0, len(token_ids), _BATCH_SIZE):
+            chunk = token_ids[i : i + _BATCH_SIZE]
+            body = {"markets": chunk, "interval": interval, "fidelity": fidelity}
+            data = self._post(CLOB_API, "/batch-prices-history", body)
+            results.update(data.get("history", {}))
+        return results
