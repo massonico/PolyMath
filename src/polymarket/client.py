@@ -66,7 +66,15 @@ class PolymarketClient:
                 if (end - start).days < min_duration_days:
                     continue
 
-            token_map = dict(zip(m["outcomes"], m["clobTokenIds"]))
+            outcomes = m["outcomes"]
+            clob_ids = m["clobTokenIds"]
+            if isinstance(outcomes, str):
+                import json as _json
+                outcomes = _json.loads(outcomes)
+            if isinstance(clob_ids, str):
+                import json as _json
+                clob_ids = _json.loads(clob_ids)
+            token_map = dict(zip(outcomes, clob_ids))
             if "Yes" not in token_map or "No" not in token_map:
                 continue
 
