@@ -15,7 +15,7 @@ def parse_args():
     parser.add_argument("--category", type=str, default=None)
     parser.add_argument("--min-duration-days", type=int, default=0)
     parser.add_argument(
-        "--interval", type=str, default="1d",
+        "--interval", type=str, default="max",
         choices=["max", "all", "1w", "1d", "6h", "1h", "1m"],
     )
     parser.add_argument("--fidelity", type=int, default=60)

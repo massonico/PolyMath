@@ -168,3 +168,17 @@ def test_batch_prices_history_passes_interval_and_fidelity():
 
     assert captured["interval"] == "1h"
     assert captured["fidelity"] == 30
+
+
+def test_get_resolved_markets_handles_string_encoded_fields():
+    client = PolymarketClient()
+    market_with_strings = {
+        **_SAMPLE_MARKET,
+        "outcomes": '["Yes", "No"]',
+        "clobTokenIds": '["token_yes_1", "token_no_1"]',
+    }
+    with patch.object(client, "_get", return_value=[market_with_strings]):
+        result = client.get_resolved_markets(limit=1)
+    assert len(result) == 1
+    assert result[0]["yes_token_id"] == "token_yes_1"
+    assert result[0]["no_token_id"] == "token_no_1"
