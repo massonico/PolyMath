@@ -51,6 +51,14 @@ docs/superpowers/          ← design specs and implementation plans
 - YES/NO series are outer-joined on timestamp and forward-filled — the two tokens trade independently and can have different last-trade timestamps
 - Internal field names are snake_case; the Gamma API uses camelCase (`conditionId` → `condition_id`, `clobTokenIds` → `yes_token_id`/`no_token_id`)
 
+## Research workflow
+
+- This is a quantitative research project, not a production application
+- Always explain statistical or mathematical choices in plain English comments
+- After any data transformation, print shape and sample rows to verify
+- Update `research/notes.md` at end of each session with: what was done, what was found, what is next
+- Never proceed with modeling until data collection is verified correct
+
 ## Testing
 
 Unit tests mock HTTP calls — do not make live API calls in tests. Use `patch.object(client, "_get", ...)` and `patch.object(client, "_post", ...)` to avoid hitting real endpoints.
