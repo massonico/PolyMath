@@ -20,9 +20,9 @@ CLOB_API = "https://clob.polymarket.com"
 DATA_API = "https://data-api.polymarket.com"
 GAMMA_API = "https://gamma-api.polymarket.com"
 
-# Stagger: distribute 30 markets evenly across the 2-second polling window
-_N_MARKETS = 30
-_STAGGER_S = 2.0 / _N_MARKETS  # ~0.067s between consecutive market startups
+# Stagger: distribute 29 markets evenly across the 2-second polling window
+_N_MARKETS = 29
+_STAGGER_S = 2.0 / _N_MARKETS  # ~0.069s between consecutive market startups
 
 MARKETS = [
     # ── West Ham United vs Leeds United ────────────────────────────────────────
@@ -119,9 +119,6 @@ MARKETS = [
     {"name": "Burnley win",
      "condition_id": "0x9fe32046273148a787b35874f527bc52ce85b889ea5536daee88197603a06bcf",
      "yes_token_id": "105052836805358449456713086304980134738624461849029453863324147546095006211406"},
-    {"name": "Burnley vs Wolves draw",
-     "condition_id": "0x13c14ca52cbe710d8cf51541bd9d26757cc7896f3df3deedfaa01d91ce2d2e00",
-     "yes_token_id": "32800173245909361626506315090705430685205211381136359506545795319665918724845"},
     {"name": "Wolves win",
      "condition_id": "0x6330fd335dd9f167e8d53f575e7ad227ddd5ef0317a704379218290ab373671e",
      "yes_token_id": "24140125406954509773893628065641650098685413498293880885739697584454975438450"},
