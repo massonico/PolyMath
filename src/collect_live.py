@@ -124,18 +124,21 @@ MARKETS = [
      "yes_token_id": "24140125406954509773893628065641650098685413498293880885739697584454975438450"},
 ]
 
-# One representative condition ID per event — used to check resolution status
-_EVENT_SENTINELS = [
-    "0xee512df0318ec5405f477a02ac1bd4b2d824aa2338a87e046d90cc4872f64599",  # West Ham win
-    "0xc9b42d64399d84d02dbea9f29798e83f3d0e721a84f6f1eddfa28aa570d8f549",  # Man United win
-    "0x13ec289656b40a8bfde87cb36c8a03b5d2ce4558df26e207ebc0548c53ac39e7",  # Man City win
-    "0x8904edd56738035077700eef932aa5608fa706d5bc29948885b0563f8f1fdf48",  # Crystal Palace win
-    "0xff2108973744b9eade57b213f7fea2ea8a03ed54b4ca229c6db6ceca4fd788d8",  # Tottenham win
-    "0xbd1f142f4429d29a740419f424a5ad5f70d53c4b70762c47e91c98995aa84e89",  # Liverpool win
-    "0x4b82f38b8bdc149685c4901a3bf88365bb202139822764a3b62b4c60f134cc09",  # Fulham win
-    "0xe657236a3f060c2f2f301de0ca1f1ded18729614cfe2e9cdf7540205022e104b",  # Sunderland win
-    "0x5ed73fc1f58f6789b0f28db9610e44852dabcb6f6de95592faa6ed8766ada9cb",  # Forest win
-    "0x9fe32046273148a787b35874f527bc52ce85b889ea5536daee88197603a06bcf",  # Burnley win
+# Event slugs used for resolution detection.
+# IMPORTANT: do NOT use conditionId lookups on the Gamma /markets endpoint —
+# the ?conditionId= filter returns wrong results (unrelated markets). The
+# /events?slug= endpoint is the only reliable way to check closed status.
+_EVENT_SLUGS = [
+    "epl-wes-lee-2026-05-24",
+    "epl-bri-mun-2026-05-24",
+    "epl-cry-ars-2026-05-24",
+    "epl-mac-ast-2026-05-24",
+    "epl-liv-bre-2026-05-24",
+    "epl-tot-eve-2026-05-24",
+    "epl-ful-new-2026-05-24",
+    "epl-sun-che-2026-05-24",
+    "epl-not-bou-2026-05-24",
+    "epl-bur-wol-2026-05-24",
 ]
 
 
@@ -298,26 +301,31 @@ async def watch_resolution(
     buffers: list[ParquetBuffer],
     stop_event: asyncio.Event,
 ) -> None:
-    """Poll Gamma API every 60s; flush all buffers and set stop_event when all events resolved."""
+    """Poll Gamma API every 60s; flush all buffers and set stop_event when all events resolved.
+
+    Uses /events?slug= — NOT /markets?conditionId=. The conditionId filter on the
+    Gamma /markets endpoint returns unrelated markets (confirmed bug). Slug lookup
+    on /events is reliable and returns the correct closed status.
+    """
     async with httpx.AsyncClient(timeout=httpx.Timeout(15.0)) as client:
         while not stop_event.is_set():
             await asyncio.sleep(60)
             try:
                 closed = 0
-                for cid in _EVENT_SENTINELS:
+                for slug in _EVENT_SLUGS:
                     r = await client.get(
-                        f"{GAMMA_API}/markets",
-                        params={"conditionId": cid},
+                        f"{GAMMA_API}/events",
+                        params={"slug": slug},
                     )
                     data = r.json()
                     if data and data[0].get("closed"):
                         closed += 1
-                pct = closed / len(_EVENT_SENTINELS) * 100
+                pct = closed / len(_EVENT_SLUGS) * 100
                 print(
-                    f"[resolution] {closed}/{len(_EVENT_SENTINELS)} events resolved ({pct:.0f}%)",
+                    f"[resolution] {closed}/{len(_EVENT_SLUGS)} events resolved ({pct:.0f}%)",
                     flush=True,
                 )
-                if closed == len(_EVENT_SENTINELS):
+                if closed == len(_EVENT_SLUGS):
                     print("[resolution] All events resolved — flushing and exiting", flush=True)
                     for buf in buffers:
                         buf.flush()
