@@ -17,6 +17,7 @@ import httpx
 import pandas as pd
 
 CLOB_API = "https://clob.polymarket.com"
+DATA_API = "https://data-api.polymarket.com"
 GAMMA_API = "https://gamma-api.polymarket.com"
 
 # Stagger: distribute 30 markets evenly across the 2-second polling window
@@ -167,11 +168,16 @@ def parse_orderbook(raw: dict, condition_id: str) -> dict:
     }
 
 
-def parse_trades(response: dict, condition_id: str) -> list[dict]:
-    """Parse a raw /trades JSON response into a list of flat records."""
+def parse_trades(response, condition_id: str) -> list[dict]:
+    """Parse a Data API /trades response into flat records.
+
+    Accepts both the Data API format (plain list) and CLOB format ({"data": [...]}).
+    Data API fields: transactionHash, side, asset, conditionId, size, price, timestamp, outcome.
+    """
+    items = response if isinstance(response, list) else response.get("data", [])
     records = []
-    for t in response.get("data", []):
-        ts_raw = t.get("timestamp", t.get("match_time", "0"))
+    for t in items:
+        ts_raw = t.get("timestamp", "0")
         try:
             ts = int(float(str(ts_raw)))
         except (ValueError, TypeError):
@@ -179,12 +185,12 @@ def parse_trades(response: dict, condition_id: str) -> list[dict]:
         records.append({
             "timestamp": ts,
             "condition_id": condition_id,
-            "trade_id": t.get("id", ""),
+            "tx_hash": t.get("transactionHash", t.get("id", "")),
             "price": float(t.get("price", 0)),
             "size": float(t.get("size", 0)),
             "side": t.get("side", ""),
-            "maker_address": t.get("maker_address", ""),
-            "taker_address": t.get("taker_address", ""),
+            "outcome": t.get("outcome", ""),
+            "asset": t.get("asset", t.get("maker_address", "")),
         })
     return records
 
@@ -266,21 +272,26 @@ async def collect_trades(
     buffer: ParquetBuffer,
     stagger_s: float,
 ) -> None:
-    """Poll /trades every 2s. Uses `after` param to skip already-seen trades."""
+    """Poll Data API /trades every 2s. Deduplicates by transactionHash (params unreliable)."""
     await asyncio.sleep(stagger_s)
-    last_ts = 0
+    seen_hashes: set[str] = set()
     while True:
         try:
-            params: dict = {"market": market["condition_id"], "limit": 100}
-            if last_ts > 0:
-                params["after"] = last_ts
-            r = await client.get(f"{CLOB_API}/trades", params=params)
+            r = await client.get(
+                f"{DATA_API}/trades",
+                params={"market": market["condition_id"], "limit": 100},
+            )
             r.raise_for_status()
             trades = parse_trades(r.json(), market["condition_id"])
+            new_count = 0
             for t in trades:
-                buffer.add(t)
-                if t["timestamp"] > last_ts:
-                    last_ts = t["timestamp"]
+                h = t["tx_hash"]
+                if h and h not in seen_hashes:
+                    seen_hashes.add(h)
+                    buffer.add(t)
+                    new_count += 1
+            if new_count:
+                print(f"[TR/{market['name']}] +{new_count} new trades", flush=True)
         except Exception as exc:
             print(f"[TR/{market['name']}] {exc}", flush=True)
         await asyncio.sleep(2.0)

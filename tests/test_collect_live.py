@@ -72,7 +72,32 @@ def test_parse_orderbook_timestamp_from_raw():
 
 # ── parse_trades ──────────────────────────────────────────────────────────────
 
-SAMPLE_TRADES = {
+# Data API format: plain list of dicts with float price/size and transactionHash
+SAMPLE_TRADES_DATA_API = [
+    {
+        "transactionHash": "0xabc123",
+        "conditionId": "0xcond",
+        "timestamp": 1748000100,
+        "price": 0.65,
+        "size": 100.0,
+        "side": "BUY",
+        "outcome": "Yes",
+        "asset": "token_yes_id",
+    },
+    {
+        "transactionHash": "0xdef456",
+        "conditionId": "0xcond",
+        "timestamp": 1748000200,
+        "price": 0.66,
+        "size": 50.0,
+        "side": "SELL",
+        "outcome": "No",
+        "asset": "token_no_id",
+    },
+]
+
+# CLOB format (legacy): {"data": [...]} with string price/size and id field
+SAMPLE_TRADES_CLOB = {
     "data": [
         {
             "id": "trade-001",
@@ -84,45 +109,46 @@ SAMPLE_TRADES = {
             "maker_address": "0xAAA",
             "taker_address": "0xBBB",
         },
-        {
-            "id": "trade-002",
-            "market": "0xcond",
-            "timestamp": "1748000200",
-            "price": "0.66",
-            "size": "50",
-            "side": "SELL",
-            "maker_address": "0xCCC",
-            "taker_address": "0xDDD",
-        },
     ]
 }
 
 
 def test_parse_trades_count():
-    records = parse_trades(SAMPLE_TRADES, "0xcond")
+    records = parse_trades(SAMPLE_TRADES_DATA_API, "0xcond")
     assert len(records) == 2
 
 
 def test_parse_trades_fields():
-    records = parse_trades(SAMPLE_TRADES, "0xcond")
+    records = parse_trades(SAMPLE_TRADES_DATA_API, "0xcond")
     t = records[0]
-    assert t["trade_id"] == "trade-001"
+    assert t["tx_hash"] == "0xabc123"
     assert t["price"] == 0.65
     assert t["size"] == 100.0
     assert t["side"] == "BUY"
-    assert t["maker_address"] == "0xAAA"
+    assert t["outcome"] == "Yes"
     assert t["condition_id"] == "0xcond"
 
 
 def test_parse_trades_timestamp_as_int():
-    records = parse_trades(SAMPLE_TRADES, "0xcond")
+    records = parse_trades(SAMPLE_TRADES_DATA_API, "0xcond")
     assert isinstance(records[0]["timestamp"], int)
     assert records[0]["timestamp"] == 1748000100
 
 
-def test_parse_trades_empty_response():
+def test_parse_trades_empty_list():
+    assert parse_trades([], "0xcond") == []
+
+
+def test_parse_trades_empty_clob_response():
     assert parse_trades({"data": []}, "0xcond") == []
 
 
 def test_parse_trades_missing_data_key():
     assert parse_trades({}, "0xcond") == []
+
+
+def test_parse_trades_clob_format_still_works():
+    records = parse_trades(SAMPLE_TRADES_CLOB, "0xcond")
+    assert len(records) == 1
+    assert records[0]["tx_hash"] == "trade-001"
+    assert records[0]["price"] == 0.65
