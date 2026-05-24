@@ -220,6 +220,7 @@ __marimo__/
 # Data
 data/raw/
 !data/raw/markets_manifest.json
+data/live/
 *.csv
 *.json
 
