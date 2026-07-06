@@ -224,6 +224,11 @@ data/live/
 *.csv
 *.json
 
+# macOS
+.DS_Store
+
 # Secrets
 .env
-private_key.txt
+*.pem
+*.key
+games/*.json
