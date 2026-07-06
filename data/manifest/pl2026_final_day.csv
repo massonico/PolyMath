@@ -1,0 +1,21 @@
+game_id,date,home,away,polymarket_condition_id,local_data_path,collection_status,notes
+,,,,0x053930d0a8a8fa4d16f4657cc316b4e6e9b40809ac87c1911ac0e1858f5e4ab0,data/live/orderbook+trades/market=0x0539.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0x13c14ca52cbe710d8cf51541bd9d26757cc7896f3df3deedfaa01d91ce2d2e00,data/live/orderbook+trades/market=0x13c1.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0x13ec289656b40a8bfde87cb36c8a03b5d2ce4558df26e207ebc0548c53ac39e7,data/live/orderbook+trades/market=0x13ec.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0x44182c59c61693162f763d958b53e4b25088202443015d88f56a7486e251c037,data/live/orderbook+trades/market=0x4418.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0x46ba57856bc9db7bcf351dcebaf92bc82fbe89f2c3fe717b6dd131a3a0961680,data/live/orderbook+trades/market=0x46ba.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0x4b82f38b8bdc149685c4901a3bf88365bb202139822764a3b62b4c60f134cc09,data/live/orderbook+trades/market=0x4b82.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0x58bde67b5999a585a4f06fa8247c87d8fcd0f6d5464875e916136f14bb855f8d,data/live/orderbook+trades/market=0x58bd.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0x5d5834ca6cbfec06b37b028231fe1d8cbb3e017637f28b53463dde7d05929559,data/live/orderbook+trades/market=0x5d58.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0x5ed73fc1f58f6789b0f28db9610e44852dabcb6f6de95592faa6ed8766ada9cb,data/live/orderbook+trades/market=0x5ed7.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0x6330fd335dd9f167e8d53f575e7ad227ddd5ef0317a704379218290ab373671e,data/live/orderbook+trades/market=0x6330.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0x67adb445e28f8ee8396b6487152fcdf79a3de4b9a98c42a6af249a05c5008cc2,data/live/orderbook+trades/market=0x67ad.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0x719275baae4874924e984476ef7663cd8cde815acb71e8244010e7a734cfafe4,data/live/orderbook+trades/market=0x7192.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0x7ef5d49e6f4f11d4979a8e4846afca2b7cde696f225514c3ae0f6bb34445d082,data/live/orderbook+trades/market=0x7ef5.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0x83e3bd62809c98d241e60ffe07ff3aa8b86f3f8cbcaed516612d3c2cf6aa1810,data/live/orderbook+trades/market=0x83e3.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0x8904edd56738035077700eef932aa5608fa706d5bc29948885b0563f8f1fdf48,data/live/orderbook+trades/market=0x8904.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0x8bb118ed5ce4d9e3f19d701c20ad6b55a785d519ed02058e3f3e46286b832875,data/live/orderbook+trades/market=0x8bb1.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0x8cdb6138e76f5d4c9874ca9f14fe1aa0c9c1bd97a61eda3e09acb0ccf3274ee3,data/live/orderbook+trades/market=0x8cdb.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0x9ce5360cc52f3baeee0240d21e61456be4389d0ca0c597d69e01f1a69b3f8db1,data/live/orderbook+trades/market=0x9ce5.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0x9fe32046273148a787b35874f527bc52ce85b889ea5536daee88197603a06bcf,data/live/orderbook+trades/market=0x9fe3.../date=2026-05-24,complete,game name unknown — provide for rename
+,,,,0xa7cd11a0a71a111283782da7514b73e196f251c7e873b7b41cfa7f129df8fad7,data/live/orderbook+trades/market=0xa7cd.../date=2026-05-24,complete,game name unknown — provide for rename

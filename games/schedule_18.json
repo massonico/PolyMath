@@ -1,0 +1,22 @@
+[
+  {
+    "kickoff_utc": "2026-06-18T16:00:00Z",
+    "polymarket_url": "https://polymarket.com/fr/sports/world-cup/fifwc-cze-rsa-2026-06-18",
+    "kalshi_url": "https://kalshi.com/markets/kxwcgame/world-cup-game/kxwcgame-26jun18czersa?op_market_ticker=KXWCGAME-26JUN18CZERSA-CZE"
+  },
+  {
+    "kickoff_utc": "2026-06-18T19:00:00Z",
+    "polymarket_url": "https://polymarket.com/fr/sports/world-cup/fifwc-che-bih-2026-06-18",
+    "kalshi_url": "https://kalshi.com/markets/kxwcgame/world-cup-game/kxwcgame-26jun18suibih?op_market_ticker=KXWCGAME-26JUN18SUIBIH-SUI"
+  },
+  {
+    "kickoff_utc": "2026-06-18T22:00:00Z",
+    "polymarket_url": "https://polymarket.com/fr/sports/world-cup/fifwc-can-qat-2026-06-18",
+    "kalshi_url": "https://kalshi.com/markets/kxwcgame/world-cup-game/kxwcgame-26jun18canqat?op_market_ticker=KXWCGAME-26JUN18CANQAT-CAN"
+  },
+  {
+    "kickoff_utc": "2026-06-19T01:00:00Z",
+    "polymarket_url": "https://polymarket.com/fr/sports/world-cup/fifwc-mex-kr-2026-06-18",
+    "kalshi_url": "https://kalshi.com/markets/kxwcgame/world-cup-game/kxwcgame-26jun18mexkor?op_market_ticker=KXWCGAME-26JUN18MEXKOR-MEX"
+  }
+]

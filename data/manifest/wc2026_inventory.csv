@@ -1,0 +1,105 @@
+match_num,stage,matchday,date_local,group,home,away,game_id,kalshi_files,polymarket_files,sportmonks_files,tournament_kalshi,tournament_polymarket,collection_status,issues
+1,group,MD1,2026-06-11,A,Mexico,South Africa,,0,0,0,0,0,missed,no_data_collection_not_started
+2,group,MD1,2026-06-11,A,Korea Republic,Czechia,,0,0,0,0,0,missed,no_data_collection_not_started
+3,group,MD2,2026-06-12,B,Canada,Bosnia and Herzegovina,fifwc-can-bih-2026-06-12,6,6,4,0,0,partial,partial_sm;no_tournament_data_pre_era
+4,group,MD2,2026-06-12,D,USA,Paraguay,fifwc-usa-par-2026-06-12,6,6,5,0,0,partial,partial_sm;no_tournament_data_pre_era
+5,group,MD3,2026-06-13,C,Haiti,Scotland,fifwc-hai-sco-2026-06-13,6,6,5,0,0,partial,partial_sm;no_tournament_data_pre_era
+6,group,MD3,2026-06-13,C,Brazil,Morocco,fifwc-bra-mar-2026-06-13,6,6,5,0,0,partial,partial_sm;no_tournament_data_pre_era
+7,group,MD3,2026-06-13,B,Qatar,Switzerland,fifwc-qat-che-2026-06-13,6,6,0,0,0,partial,no_sm;no_tournament_data_pre_era
+8,group,MD3,2026-06-14,D,Australia,Türkiye,fifwc-aus-tur-2026-06-14,6,6,5,0,0,partial,partial_sm;no_tournament_data_pre_era;utc_date_jun14
+9,group,MD4,2026-06-14,E,Côte d'Ivoire,Ecuador,,0,0,0,0,0,missed,
+10,group,MD4,2026-06-14,E,Germany,Curaçao,fifwc-ger-kor-2026-06-14,6,6,4,0,0,partial,bad_slug_polymarket_used_kor_for_curacao;partial_sm;no_tournament_data_pre_era
+11,group,MD4,2026-06-14,F,Netherlands,Japan,,0,0,0,0,0,missed,was_in_schedule_14b_never_collected
+12,group,MD4,2026-06-14,F,Sweden,Tunisia,,0,0,0,0,0,missed,
+13,group,MD5,2026-06-15,G,Belgium,Egypt,fifwc-bel-egy-2026-06-15,6,6,6,0,0,complete,no_tournament_data_pre_era
+14,group,MD5,2026-06-15,H,Saudi Arabia,Uruguay,fifwc-ksa-ury-2026-06-15,6,6,3,0,0,partial,partial_sm;no_tournament_data_pre_era
+15,group,MD5,2026-06-15,H,Spain,Cabo Verde,fifwc-esp-usa-2026-06-15,0,0,0,0,0,ghost,bad_slug_polymarket_used_usa_for_cabo_verde;0_files_no_data
+16,group,MD5,2026-06-15,G,IR Iran,New Zealand,,0,0,0,0,0,missed,was_in_schedule_15_never_collected
+17,group,MD6,2026-06-16,I,France,Senegal,,0,0,0,0,0,missed,
+18,group,MD6,2026-06-16,I,Iraq,Norway,,0,0,0,0,0,missed,
+19,group,MD6,2026-06-16,J,Argentina,Algeria,,0,0,0,0,0,missed,was_in_schedule_17_01Z_never_collected
+20,group,MD6,2026-06-16,J,Austria,Jordan,,0,0,0,0,0,missed,
+21,group,MD7,2026-06-17,L,Ghana,Panama,,0,0,0,0,0,missed,
+22,group,MD7,2026-06-17,L,England,Croatia,,0,0,0,0,0,missed,
+23,group,MD7,2026-06-17,K,Portugal,Congo DR,,0,0,0,0,0,missed,
+24,group,MD7,2026-06-17,K,Uzbekistan,Colombia,,0,0,0,0,0,missed,
+25,group,MD8,2026-06-18,A,Czechia,South Africa,fifwc-cze-rsa-2026-06-18,6,6,0,0,0,partial,no_sm;no_tournament_data_pre_era
+26,group,MD8,2026-06-18,B,Switzerland,Bosnia and Herzegovina,fifwc-che-bih-2026-06-18,6,6,6,0,0,complete,no_tournament_data_pre_era
+27,group,MD8,2026-06-18,B,Canada,Qatar,fifwc-can-qat-2026-06-18,6,6,6,0,0,complete,no_tournament_data_pre_era
+28,group,MD8,2026-06-18,A,Mexico,Korea Republic,fifwc-mex-kr-2026-06-18,6,6,6,0,0,complete,no_tournament_data_pre_era
+29,group,MD9,2026-06-19,C,Brazil,Haiti,fifwc-bra-hai-2026-06-19,6,6,6,0,0,complete,no_tournament_data_pre_era
+30,group,MD9,2026-06-19,C,Scotland,Morocco,fifwc-sco-mar-2026-06-19,6,6,6,0,0,complete,no_tournament_data_pre_era
+31,group,MD9,2026-06-19,D,Türkiye,Paraguay,fifwc-tur-par-2026-06-19,6,6,6,0,0,complete,no_tournament_data_pre_era
+32,group,MD9,2026-06-19,D,USA,Australia,fifwc-usa-aus-2026-06-19,6,6,6,0,0,complete,no_tournament_data_pre_era
+33,group,MD10,2026-06-20,E,Germany,Côte d'Ivoire,,0,0,0,0,0,missed,
+34,group,MD10,2026-06-20,E,Ecuador,Curaçao,,0,0,0,0,0,missed,
+35,group,MD10,2026-06-20,F,Netherlands,Sweden,,0,0,0,0,0,missed,
+36,group,MD10,2026-06-20,F,Tunisia,Japan,,0,0,0,0,0,missed,
+37,group,MD11,2026-06-21,H,Uruguay,Cabo Verde,fifwc-ury-cvi-2026-06-21,6,6,0,0,0,partial,no_sm;no_tournament_data_pre_era
+38,group,MD11,2026-06-21,H,Spain,Saudi Arabia,fifwc-esp-ksa-2026-06-21,6,6,6,0,0,complete,no_tournament_data_pre_era
+39,group,MD11,2026-06-21,G,Belgium,IR Iran,fifwc-bel-irn-2026-06-21,6,6,6,0,0,complete,no_tournament_data_pre_era
+40,group,MD11,2026-06-21,G,New Zealand,Egypt,fifwc-nzl-egy-2026-06-21,6,6,6,0,0,complete,no_tournament_data_pre_era
+41,group,MD12,2026-06-22,I,Norway,Senegal,fifwc-nor-sen-2026-06-22,6,6,5,0,0,partial,partial_sm;no_tournament_data_pre_era
+42,group,MD12,2026-06-22,I,France,Iraq,fifwc-fra-irq-2026-06-22,6,6,6,0,0,complete,no_tournament_data_pre_era
+43,group,MD12,2026-06-22,J,Argentina,Austria,fifwc-arg-aut-2026-06-22,6,6,6,0,0,complete,no_tournament_data_pre_era
+44,group,MD12,2026-06-22,J,Jordan,Algeria,fifwc-jor-alg-2026-06-22,6,6,6,0,0,complete,no_tournament_data_pre_era
+45,group,MD13,2026-06-23,L,England,Ghana,fifwc-eng-gha-2026-06-23,6,6,6,1,1,complete,
+46,group,MD13,2026-06-23,L,Panama,Croatia,fifwc-pan-hrv-2026-06-23,6,6,6,1,1,complete,
+47,group,MD13,2026-06-23,K,Portugal,Uzbekistan,fifwc-prt-uzb-2026-06-23,6,6,6,1,1,complete,
+48,group,MD13,2026-06-23,K,Colombia,Congo DR,fifwc-col-cdr-2026-06-23,6,6,6,1,1,complete,
+49,group,MD14,2026-06-24,C,Scotland,Brazil,,0,0,0,0,0,missed,
+50,group,MD14,2026-06-24,C,Morocco,Haiti,,0,0,0,0,0,missed,
+51,group,MD14,2026-06-24,B,Switzerland,Canada,,0,0,0,0,0,missed,
+52,group,MD14,2026-06-24,B,Bosnia and Herzegovina,Qatar,,0,0,0,0,0,missed,
+53,group,MD14,2026-06-24,A,Czechia,Mexico,,0,0,0,0,0,missed,
+54,group,MD14,2026-06-24,A,South Africa,Korea Republic,,0,0,0,0,0,missed,
+55,group,MD15,2026-06-25,E,Curaçao,Côte d'Ivoire,,0,0,0,0,0,missed,
+56,group,MD15,2026-06-25,E,Ecuador,Germany,,0,0,0,0,0,missed,
+57,group,MD15,2026-06-25,F,Japan,Sweden,,0,0,0,0,0,missed,
+58,group,MD15,2026-06-25,F,Tunisia,Netherlands,,0,0,0,0,0,missed,
+59,group,MD15,2026-06-25,D,Türkiye,USA,,0,0,0,0,0,missed,
+60,group,MD15,2026-06-25,D,Paraguay,Australia,,0,0,0,0,0,missed,
+61,group,MD16,2026-06-26,I,Norway,France,fifwc-nor-fra-2026-06-26,6,6,6,1,1,complete,concurrent_final_matchday
+62,group,MD16,2026-06-26,I,Senegal,Iraq,fifwc-sen-irq-2026-06-26,6,6,6,1,1,complete,concurrent_final_matchday
+63,group,MD16,2026-06-26,G,Egypt,IR Iran,fifwc-egy-irn-2026-06-26,6,6,6,1,1,complete,concurrent_final_matchday
+64,group,MD16,2026-06-26,G,New Zealand,Belgium,fifwc-nzl-bel-2026-06-26,6,6,6,1,1,complete,concurrent_final_matchday
+65,group,MD16,2026-06-26,H,Cabo Verde,Saudi Arabia,fifwc-cvi-ksa-2026-06-26,6,6,0,1,1,partial,no_sm;concurrent_final_matchday
+66,group,MD16,2026-06-26,H,Uruguay,Spain,fifwc-ury-esp-2026-06-26,6,6,5,1,1,partial,partial_sm;concurrent_final_matchday
+67,group,MD17,2026-06-27,L,Panama,England,,0,0,0,0,0,missed,
+68,group,MD17,2026-06-27,L,Croatia,Ghana,,0,0,0,0,0,missed,
+69,group,MD17,2026-06-27,J,Algeria,Austria,,0,0,0,0,0,missed,
+70,group,MD17,2026-06-27,J,Jordan,Argentina,,0,0,0,0,0,missed,
+71,group,MD17,2026-06-27,K,Colombia,Portugal,,0,0,0,0,0,missed,
+72,group,MD17,2026-06-27,K,Congo DR,Uzbekistan,,0,0,0,0,0,missed,
+73,r32,,2026-06-28,,South Africa,Canada,fifwc-rsa-can-2026-06-28,4,6,6,1,1,complete,
+74,r32,,2026-06-29,,Germany,Paraguay,fifwc-ger-par-2026-06-29,4,6,6,1,1,complete,result_pso
+75,r32,,2026-06-29,,Netherlands,Morocco,,0,0,0,0,0,missed,result_pso
+76,r32,,2026-06-29,,Brazil,Japan,fifwc-bra-jpn-2026-06-29,4,6,6,1,1,complete,
+77,r32,,2026-06-30,,France,Sweden,,0,0,0,0,0,missed,
+78,r32,,2026-06-30,,Côte d'Ivoire,Norway,,0,0,0,0,0,missed,
+79,r32,,2026-06-30,,Mexico,Ecuador,,0,0,0,0,0,missed,
+80,r32,,2026-07-01,,England,Congo DR,,0,0,0,0,0,missed,
+81,r32,,2026-07-01,,USA,Bosnia and Herzegovina,fifwc-usa-bih-2026-07-01,4,6,5,1,1,partial,partial_sm
+82,r32,,2026-07-01,,Belgium,Senegal,fifwc-bel-sen-2026-07-01,4,6,6,1,1,complete,result_aet
+83,r32,,2026-07-02,,Portugal,Croatia,fifwc-prt-hrv-2026-07-02,4,6,6,1,1,complete,
+84,r32,,2026-07-02,,Spain,Austria,fifwc-esp-aut-2026-07-02,4,6,6,1,1,complete,
+85,r32,,2026-07-02,,Switzerland,Algeria,,0,0,0,0,0,missed,
+86,r32,,2026-07-03,,Argentina,Cabo Verde,fifwc-arg-cvi-2026-07-03,4,6,0,1,1,partial,no_sm;result_aet
+87,r32,,2026-07-03,,Colombia,Ghana,fifwc-col-gha-2026-07-03,4,6,6,1,1,complete,
+88,r32,,2026-07-03,,Australia,Egypt,,0,0,0,0,0,missed,result_pso
+89,r16,,2026-07-04,,Paraguay,France,fifwc-par-fra-2026-07-04,4,6,6,1,1,complete,
+90,r16,,2026-07-04,,Canada,Morocco,fifwc-can-mar-2026-07-04,4,6,6,1,1,complete,
+91,r16,,2026-07-05,,Brazil,Norway,fifwc-bra-nor-2026-07-05,4,6,6,1,1,complete,
+92,r16,,2026-07-05,,Mexico,England,fifwc-mex-eng-2026-07-05,4,6,1,1,1,partial,partial_sm_collection_ongoing_at_session_end
+93,r16,,2026-07-06,,Portugal,Spain,,0,0,0,0,0,future,need_urls_for_collection
+94,r16,,2026-07-06,,USA,Belgium,,0,0,0,0,0,future,need_urls_for_collection
+95,r16,,2026-07-07,,Argentina,Egypt,,0,0,0,0,0,future,need_urls_for_collection
+96,r16,,2026-07-07,,Switzerland,Colombia,,0,0,0,0,0,future,need_urls_for_collection
+97,qf,,2026-07-09,,France,Morocco,,0,0,0,0,0,future,france_won_m89_morocco_won_m90
+98,qf,,2026-07-10,,TBD (winner M93),TBD (winner M94),,0,0,0,0,0,future_tbd,depends_on_m93_m94
+99,qf,,2026-07-11,,Norway,England,,0,0,0,0,0,future,norway_won_m91_england_won_m92
+100,qf,,2026-07-11,,TBD (winner M95),TBD (winner M96),,0,0,0,0,0,future_tbd,depends_on_m95_m96
+101,sf,,2026-07-14,,TBD (winner M97),TBD (winner M98),,0,0,0,0,0,future_tbd,depends_on_qf
+102,sf,,2026-07-15,,TBD (winner M99),TBD (winner M100),,0,0,0,0,0,future_tbd,depends_on_qf
+103,bronze,,2026-07-18,,TBD (loser M101),TBD (loser M102),,0,0,0,0,0,future_tbd,depends_on_sf
+104,final,,2026-07-19,,TBD (winner M101),TBD (winner M102),,0,0,0,0,0,future_tbd,depends_on_sf

@@ -1,0 +1,22 @@
+[
+  {
+    "kickoff_utc": "2026-06-21T16:00:00Z",
+    "polymarket_url": "https://polymarket.com/sports/world-cup/fifwc-esp-ksa-2026-06-21",
+    "kalshi_url": "https://kalshi.com/markets/kxwcgame/world-cup-game/kxwcgame-26jun21espksa?op_market_ticker=KXWCGAME-26JUN21ESPKSA-ESP"
+  },
+  {
+    "kickoff_utc": "2026-06-21T19:00:00Z",
+    "polymarket_url": "https://polymarket.com/sports/world-cup/fifwc-bel-irn-2026-06-21",
+    "kalshi_url": "https://kalshi.com/markets/kxwcgame/world-cup-game/kxwcgame-26jun21beliri?op_market_ticker=KXWCGAME-26JUN21BELIRI-BEL"
+  },
+  {
+    "kickoff_utc": "2026-06-21T22:00:00Z",
+    "polymarket_url": "https://polymarket.com/sports/world-cup/fifwc-ury-cvi-2026-06-21",
+    "kalshi_url": "https://kalshi.com/markets/kxwcgame/world-cup-game/kxwcgame-26jun21urucpv"
+  },
+  {
+    "kickoff_utc": "2026-06-22T01:00:00Z",
+    "polymarket_url": "https://polymarket.com/sports/world-cup/fifwc-nzl-egy-2026-06-21",
+    "kalshi_url": "https://kalshi.com/markets/kxwcgame/world-cup-game/kxwcgame-26jun21nzlegy"
+  }
+]

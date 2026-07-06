@@ -24,7 +24,7 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-MANIFEST
+/MANIFEST
 
 # PyInstaller
 #   Usually these files are written by a python script from a template
@@ -222,6 +222,7 @@ data/raw/
 !data/raw/markets_manifest.json
 data/live/
 *.csv
+!data/manifest/*.csv
 *.json
 
 # macOS
@@ -232,3 +233,4 @@ data/live/
 *.pem
 *.key
 games/*.json
+!games/schedule*.json
