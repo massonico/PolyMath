@@ -206,11 +206,11 @@ def main():
     config_path = write_config(slug, pm_markets, k_markets, event_ticker, op_section)
     print(f"\nConfig written: {config_path}")
     print("\n── Launch commands ─────────────────────────────────────────────────────────")
-    print(f"tmux new-session -d -s kalshi-wc       && tmux send-keys -t kalshi-wc       'source .venv/bin/activate && caffeinate -i -d env PYTHONPATH=src python src/collect_game_kalshi.py games/{slug}.json' Enter")
-    print(f"tmux new-session -d -s polymarket-wc   && tmux send-keys -t polymarket-wc   'source .venv/bin/activate && caffeinate -i -d env PYTHONPATH=src python src/collect_game_polymarket.py games/{slug}.json' Enter")
-    print(f"tmux new-session -d -s sportmonks-wc   && tmux send-keys -t sportmonks-wc   'source .venv/bin/activate && caffeinate -i -d env PYTHONPATH=src python src/collect_game_sportmonks.py games/{slug}.json' Enter")
+    print(f"tmux new-session -d -s kalshi-wc       && tmux send-keys -t kalshi-wc       'source .venv/bin/activate && env PYTHONPATH=src python src/collect_game_kalshi.py games/{slug}.json' Enter")
+    print(f"tmux new-session -d -s polymarket-wc   && tmux send-keys -t polymarket-wc   'source .venv/bin/activate && env PYTHONPATH=src python src/collect_game_polymarket.py games/{slug}.json' Enter")
+    print(f"tmux new-session -d -s sportmonks-wc   && tmux send-keys -t sportmonks-wc   'source .venv/bin/activate && env PYTHONPATH=src python src/collect_game_sportmonks.py games/{slug}.json' Enter")
     if op_section:
-        print(f"tmux new-session -d -s odds-wc         && tmux send-keys -t odds-wc         'source .venv/bin/activate && caffeinate -i -d env PYTHONPATH=.:src python src/collect_game_odds.py games/{slug}.json' Enter")
+        print(f"tmux new-session -d -s odds-wc         && tmux send-keys -t odds-wc         'source .venv/bin/activate && env PYTHONPATH=.:src python src/collect_game_odds.py games/{slug}.json' Enter")
     print("────────────────────────────────────────────────────────────────────────────")
 
 
