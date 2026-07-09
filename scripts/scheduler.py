@@ -162,6 +162,19 @@ async def _run_game(game: dict, lead: timedelta, window: timedelta, dry_run: boo
         subprocess.run(["tmux", "kill-session", "-t", sess], capture_output=True)
     print(f"[{tag}] Done — sessions cleaned up", flush=True)
 
+    # ── Sync to GCS ─────────────────────────────────────────────────────────
+    gcs_path = f"gs://polymath-markets/live/{slug}/"
+    print(f"[{tag}] Syncing data/live/{slug}/ → {gcs_path} ...", flush=True)
+    result = subprocess.run(
+        ["gsutil", "-m", "rsync", "-r", "-x", r".*/raw_json/.*",
+         f"data/live/{slug}/", gcs_path],
+        capture_output=True, text=True,
+    )
+    if result.returncode == 0:
+        print(f"[{tag}] GCS sync complete", flush=True)
+    else:
+        print(f"[{tag}] GCS sync failed:\n{result.stderr}", flush=True)
+
 
 async def _main(schedule_path: str, lead: timedelta, window: timedelta, dry_run: bool):
     games = json.loads(Path(schedule_path).read_text())
