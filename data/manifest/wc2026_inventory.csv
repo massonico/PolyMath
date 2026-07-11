@@ -99,7 +99,7 @@ match_num,stage,matchday,date_local,group,home,away,game_id,kalshi_files,polymar
 98,qf,,2026-07-10,,TBD (winner M93),TBD (winner M94),,0,0,0,0,0,future_tbd,depends_on_m93_m94
 99,qf,,2026-07-11,,Norway,England,,0,0,0,0,0,future,norway_won_m91_england_won_m92
 100,qf,,2026-07-11,,Argentina,Switzerland,fifwc-arg-che-2026-07-11,0,0,0,0,0,future,argentina_won_m95_switzerland_won_m96
-101,sf,,2026-07-14,,TBD (winner M97),TBD (winner M98),,0,0,0,0,0,future_tbd,depends_on_qf
+101,sf,,2026-07-14,,France,Spain,fifwc-fra-esp-2026-07-14,0,0,0,0,0,future,france_won_m97_spain_won_m98
 102,sf,,2026-07-15,,TBD (winner M99),TBD (winner M100),,0,0,0,0,0,future_tbd,depends_on_qf
 103,bronze,,2026-07-18,,TBD (loser M101),TBD (loser M102),,0,0,0,0,0,future_tbd,depends_on_sf
 104,final,,2026-07-19,,TBD (winner M101),TBD (winner M102),,0,0,0,0,0,future_tbd,depends_on_sf
